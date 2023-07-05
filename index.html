@@ -37,6 +37,14 @@
 <script src="vendors/react-with-dom.js"></script>
 <script src="vendors/babel.min.js"></script>
 <script type="text/babel">
+    const root = ReactDOM.createRoot(document.getElementById('app'));
+    root.render(
+        <>
+            <Header />
+            <Main />
+        </>
+    );
+    
     function Header() {
         let [expanded, setExpanded] = React.useState(false);
         let [toggled, setToggled] = React.useState(false);
@@ -225,7 +233,7 @@
 
         let sizes = [];
         const onSize = size => {
-            sizes = sizes.slice().push(size);
+            sizes = [...sizes, size];
         };
 
         React.useEffect(() => {
@@ -392,16 +400,6 @@
             </section>
         </main>;
     }
-
-    setTimeout(() => {
-        const root = ReactDOM.createRoot(document.getElementById('app'));
-        root.render(
-            <>
-                <Header />
-                <Main />
-            </>
-        );
-    }, 100);
 </script>
 
 </body>
